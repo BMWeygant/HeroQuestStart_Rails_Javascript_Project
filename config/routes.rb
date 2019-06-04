@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   root 'welcome#home'
   resources :heros
   resources :adventures
-  resources :experiences, only: [:new, :create, :edit, :destroy]
   post '/experiences', to: 'experiences#create'
 end
