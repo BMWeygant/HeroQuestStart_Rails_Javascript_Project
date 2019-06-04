@@ -10,27 +10,23 @@
   </head>
 
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-     <div class="container">
-       <div class="navbar-header">
-         <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-           <span class="sr-only">Toggle navigation</span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button> -->
-       <a class="navbar-brand" href="<%= root_url %>">Home</a>
-       <a class="navbar-brand" <%= link_to "Sign Up", new_user_registration_path %></a>
-       <a class="navbar-brand" <%= link_to "Log In", user_session_path %></a>
-       <a class="navbar-brand" <%= link_to "Log Out", destroy_user_session_path %></a>
-       </div>
-       <div class="navbar-collapse collapse">
-         <ul class="nav navbar-nav">
+    <nav class="navbar navbar-default">
 
-         </ul>
-       </div><!--/.nav-collapse -->
+     <div class="container">
+
+       <div class="navbar-header">
+         <%= link_to "Home", root_path, class: "navbar-brand" %>
+         <%= link_to "Sign Up", new_user_registration_path unless user_signed_in?%>
+         <% if user_signed_in? %>
+         <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+         <% else %>
+         <%= link_to "Log In", new_user_session_path %>
+         <% end %>
+       </div>
      </div>
-   </div>
+   </nav>
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

@@ -1,6 +1,7 @@
 class HerosController < ApplicationController
 
   def index
+    @heros = Hero.all.order("created_at DESC")
   end
 
   def new
@@ -8,7 +9,12 @@ class HerosController < ApplicationController
   end
 
   def create
-    @hero = Hero.new(hero_params)
+    @hero = Hero.create(hero_params)
+      if @hero.save
+        redirect_to 'heros_path'
+      else
+        render 'new'
+      end
   end
 
   private
