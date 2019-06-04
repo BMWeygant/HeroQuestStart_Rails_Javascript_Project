@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_145644) do
+ActiveRecord::Schema.define(version: 2019_06_04_160745) do
+
+  create_table "heros", force: :cascade do |t|
+    t.string "name"
+    t.integer "hp"
+    t.integer "treasure"
+    t.integer "total_xp"
+    t.boolean "incapacitated"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
