@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 
  gem 'omniauth-github'
 
+ gem 'simple_form', '~> 4.1'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
