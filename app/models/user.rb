@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :heros
-  has_many :adventures
+  has_many :experiences
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

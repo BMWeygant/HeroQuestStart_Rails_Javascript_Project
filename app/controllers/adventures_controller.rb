@@ -9,10 +9,12 @@ class AdventuresController < ApplicationController
   end
 
   def create
-    @adventure = current_user.adventures.build(adventure_params)
+    @adventure = Adventure.new(adventure_params)
     @adventure.user_id = current_user.id
+    @adventure.hero_id = @hero.id
+
       if @adventure.save
-        redirect_to adventures_path
+        redirect_to hero_adventures_path
       else
         render 'new'
       end
@@ -25,6 +27,6 @@ class AdventuresController < ApplicationController
   private
 
   def adventure_params
-    params.require(:adventure).permit(:title, :hp_rating, :treasure_rating, :user_id)
+    params.require(:adventure).permit(:title, :user_id, :hero_id)
   end
 end

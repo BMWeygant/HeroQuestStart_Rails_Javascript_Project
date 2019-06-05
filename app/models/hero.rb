@@ -1,6 +1,6 @@
 class Hero < ApplicationRecord
   belongs_to :user
-  has_many :experiences
-  has_many :adventures, through: :experiences
+  has_many :adventures
+  has_many :experiences, through: :adventures
   scope :incapacitated, -> {where(incapacitated: true) }
 end

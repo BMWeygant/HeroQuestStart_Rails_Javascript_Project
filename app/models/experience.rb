@@ -1,4 +1,4 @@
 class Experience < ApplicationRecord
-  belongs_to :heros
-  belongs_to :adventures
+  has_many :heros, through: :adventures
+  has_many :adventures
 end
