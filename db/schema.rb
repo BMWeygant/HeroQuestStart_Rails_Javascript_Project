@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_161846) do
+ActiveRecord::Schema.define(version: 2019_06_05_010632) do
 
   create_table "adventures", force: :cascade do |t|
     t.string "title"
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 2019_06_04_161846) do
 
   create_table "heros", force: :cascade do |t|
     t.string "name"
-    t.integer "hp"
-    t.integer "treasure"
-    t.integer "total_xp"
-    t.boolean "incapacitated"
+    t.integer "hp", default: 5
+    t.integer "treasure", default: 0
+    t.integer "total_xp", default: 0
+    t.boolean "incapacitated", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

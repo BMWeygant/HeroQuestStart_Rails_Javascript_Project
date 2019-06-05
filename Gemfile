@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
  gem 'simple_form', '~> 4.1'
 
+ gem 'pry'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

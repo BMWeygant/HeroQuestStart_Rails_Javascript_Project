@@ -9,7 +9,9 @@ class HerosController < ApplicationController
   end
 
   def create
-    @hero = Hero.create(hero_params)
+    @hero = Hero.new(hero_params)
+    #binding.pry
+    @hero.save
       if @hero.save
         redirect_to 'heros_path'
       else
