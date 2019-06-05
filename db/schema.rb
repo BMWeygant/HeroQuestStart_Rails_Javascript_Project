@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_171401) do
+ActiveRecord::Schema.define(version: 2019_06_04_161846) do
 
   create_table "adventures", force: :cascade do |t|
     t.string "title"
-    t.integer "hp_rating"
-    t.integer "treasure_rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-  end
-
-  create_table "experiences", force: :cascade do |t|
-    t.integer "xp"
     t.integer "user_id"
     t.integer "adventure_id"
     t.integer "hero_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.boolean "hard_mode", default: false
+    t.integer "xp", default: 5
+    t.integer "hp_rating", default: 3
+    t.integer "treasure_rating", default: 2
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,9 +37,9 @@ ActiveRecord::Schema.define(version: 2019_06_05_171401) do
     t.integer "treasure", default: 0
     t.integer "total_xp", default: 0
     t.boolean "incapacitated", default: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
