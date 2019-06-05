@@ -20,6 +20,10 @@ class HerosController < ApplicationController
       end
   end
 
+  def show
+    @hero = Hero.find_by(params[:hero_id])
+  end
+
   private
 
   def hero_params

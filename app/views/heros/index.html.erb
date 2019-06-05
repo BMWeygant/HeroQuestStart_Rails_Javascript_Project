@@ -1,5 +1,9 @@
 <h1>All the King's Heros!</h1>
 
+<% if @heros.count == 0 %>
+  <h2> You currently have no heros to adventure with!</h2>
+<% end %>
+
 <% @heros.each do |hero|%>
-<h4><% hero.name%></h4>
+<h4><%= link_to hero.name, hero_path(hero) %></h4>
 <% end %>
