@@ -9,11 +9,12 @@ class HerosController < ApplicationController
   end
 
   def create
-    @hero = Hero.new(hero_params)
-    #binding.pry
-    @hero.save
+    @hero = current_user.heros.build(hero_params)
+    @hero.user_id = current_user.id
+    #raise params
+    #inding.pry
       if @hero.save
-        redirect_to 'heros_path'
+        redirect_to heros_path
       else
         render 'new'
       end
@@ -22,6 +23,6 @@ class HerosController < ApplicationController
   private
 
   def hero_params
-    params.require(:hero).permit(:name, :hp, :treasure, :total_xp)
+    params.require(:hero).permit(:name, :hp, :treasure, :total_xp, :user_id)
   end
 end
