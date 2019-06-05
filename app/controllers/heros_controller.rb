@@ -11,8 +11,6 @@ class HerosController < ApplicationController
   def create
     @hero = current_user.heros.build(hero_params)
     @hero.user_id = current_user.id
-    #raise params
-    #inding.pry
       if @hero.save
         redirect_to heros_path
       else
@@ -21,9 +19,14 @@ class HerosController < ApplicationController
   end
 
   def show
-    @hero = Hero.find_by(params[:hero_id])
+    #binding.pry
+    @hero = Hero.find(params[:id])
   end
 
+  def destroy
+    @hero.destroy
+    redirect_to heros_path
+  end
   private
 
   def hero_params

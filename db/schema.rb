@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_011518) do
     t.boolean "incapacitated", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

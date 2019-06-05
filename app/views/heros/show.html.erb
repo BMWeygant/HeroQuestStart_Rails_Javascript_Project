@@ -1,8 +1,11 @@
-<h1>Heros Individual Page</h1>
+<h1 align=center>Welcome to <%="#{@hero.name}"%>'s Home</h1>
 
+<h4>Stats</h4>
 <ul>
 <li>Hero: <%= @hero.name %></li>
 <li>HP: <%= @hero.hp %></li>
 <li>Treasure: <%= @hero.treasure %></li>
 <li>XP: <%= @hero.total_xp %></li>
 </ul>
+<h4>What command do you wish for <%="#{@hero.name}"%>? </h4>
+<%= link_to "Go on Adventure", adventures_path %><%=  %><%=  %><%=  %>

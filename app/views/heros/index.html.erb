@@ -1,9 +1,10 @@
 <h1>All the King's Heros!</h1>
 
-<% if @heros.count == 0 %>
-  <h2> You currently have no heros to adventure with!</h2>
+<% if current_user.heros.count == 0 %>
+  <h3> You currently have no heros to adventure with MiLord!</h3><br>
+  <h5> You can create a new hero <%= link_to "here!", new_hero_path %></h5>
 <% end %>
 
 <% @heros.each do |hero|%>
-<h4><%= link_to hero.name, hero_path(hero) %></h4>
+<h4><%= link_to hero.name, hero_path(hero) unless current_user.id != hero.user_id%></h4>
 <% end %>
