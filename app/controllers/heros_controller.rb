@@ -19,7 +19,6 @@ class HerosController < ApplicationController
   end
 
   def show
-    #binding.pry
     @hero = Hero.find(params[:id])
   end
 
