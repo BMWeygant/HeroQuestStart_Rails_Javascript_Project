@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :users do
     resources :heros, only: [:index, :new]
   end
-  resources :heros, except: [:index, :new]
-  resources :adventures
+  resources :heros, except: [:index, :new] do
+    resources :adventures, only: [:show]
+  end
+  resources :adventures, except: [:show]
+
   resources :experiences
-  #post '/experiences', to: 'experiences#create'
+  post '/adventures', to: 'adventures#create'
 end
