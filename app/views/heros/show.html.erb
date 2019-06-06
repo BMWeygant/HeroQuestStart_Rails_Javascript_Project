@@ -8,5 +8,5 @@
 <li>XP: <%= @hero.total_xp %></li>
 </ul>
 <h4>What command do you wish for <%="#{@hero.name}"%>? </h4>
-<%= link_to "Go On Adventure", adventures_path%><br><br> 
+<%= link_to "Go On Adventure", user_experiences_path(current_user)%><br><br> 
 <%= link_to "Dismiss Permanently", hero_path(@hero), method: :delete, data: { confirm: "Are you sure? This will permanently remove #{@hero.name} from your service."}, class: "btn btn-custom" %>

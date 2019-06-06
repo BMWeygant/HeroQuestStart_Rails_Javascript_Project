@@ -1,0 +1,10 @@
+<h1>All Available Adventures!</h1>
+
+<% if current_user.experiences.count == 0 %>
+  <h3> You currently have no adventures to send your heros on MiLord!</h3><br>
+  <h5> You can create a new adventure <%= link_to "here!", new_user_experience_path(current_user) %></h5>
+<% end %>
+
+<% @experiences.each do |experience|%>
+<h4><%= link_to experience.title, experience_path(experience) unless current_user.id != experience.user_id%></h4>
+<% end %>

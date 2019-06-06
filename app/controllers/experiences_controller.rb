@@ -9,17 +9,18 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @experiences = current_user.experiences.build(experience_params)
+    @experience = current_user.experiences.build(experience_params)
     @experience.user_id = current_user.id
-      if @adventure.save
+      if @experience.save
         redirect_to user_experiences_path(current_user)
       else
         render 'new'
+      end
   end
 
   private
 
   def experience_params
-    params.require(:hero).permit(:title, :xp, :hp_rating, :treasure_rating)
+    params.require(:experience).permit(:title, :xp, :hp_rating, :treasure_rating, :user_id)
   end
 end
