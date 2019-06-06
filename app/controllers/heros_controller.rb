@@ -22,14 +22,19 @@ class HerosController < ApplicationController
     @hero = Hero.find(params[:id])
   end
 
+  def update
+
+  end
+
   def destroy
     @hero = Hero.find(params[:id])
     @hero.destroy
     redirect_to user_heros_path(current_user)
   end
+
   private
 
   def hero_params
-    params.require(:hero).permit(:name, :hp, :treasure, :total_xp, :user_id)
+    params.require(:hero).permit(:name, :hp, :treasure, :total_xp, :incapacitated, :user_id)
   end
 end

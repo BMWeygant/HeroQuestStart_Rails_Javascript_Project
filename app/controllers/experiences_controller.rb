@@ -18,6 +18,13 @@ class ExperiencesController < ApplicationController
       end
   end
 
+  def show
+    @experience = Experience.find(params[:id])
+    #@hero = Hero.find_by(params[:id])
+    @heros = Hero.all.order("created_at ASC") 
+    @experience.adventures.build
+  end
+
   private
 
   def experience_params
