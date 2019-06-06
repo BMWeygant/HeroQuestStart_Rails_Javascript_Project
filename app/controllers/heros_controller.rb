@@ -12,7 +12,7 @@ class HerosController < ApplicationController
     @hero = current_user.heros.build(hero_params)
     @hero.user_id = current_user.id
       if @hero.save
-        redirect_to heros_path
+        redirect_to user_heros_path(current_user)
       else
         render 'new'
       end
@@ -26,7 +26,7 @@ class HerosController < ApplicationController
   def destroy
     @hero = Hero.find(params[:id])
     @hero.destroy
-    redirect_to heros_path
+    redirect_to user_heros_path(current_user)
   end
   private
 
