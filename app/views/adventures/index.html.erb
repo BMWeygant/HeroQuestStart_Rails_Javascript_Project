@@ -1,5 +1,5 @@
 <h1 align=center>List of available Adventure's</h1>
 
 <% @adventures.each do |adventure|%>
-<h4><%= link_to adventure.title, adventure_path(adventure) unless current_user.id != adventure.user_id%></h4>
+<h4><%= link_to adventure.title, adventure_path(adventure)%></h4>
 <% end %>

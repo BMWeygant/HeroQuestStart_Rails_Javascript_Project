@@ -1,7 +1,7 @@
 class AdventuresController < ApplicationController
 
   def index
-    @adventures =Adventure.all
+    @adventures = Adventure.all
   end
 
   def new
@@ -9,12 +9,10 @@ class AdventuresController < ApplicationController
   end
 
   def create
-    @adventure = Adventure.new(adventure_params)
-    @adventure.user_id = current_user.id
-    @adventure.hero_id = @hero.id
-
-      if @adventure.save
-        redirect_to hero_adventures_path
+    adventure = Adventure.create(adventure_params)
+    #@adventure.hero_id = @hero.id
+      if adventure.save
+        redirect_to adventures_path
       else
         render 'new'
       end
