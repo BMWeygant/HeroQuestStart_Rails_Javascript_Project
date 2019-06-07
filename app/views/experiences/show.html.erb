@@ -10,7 +10,12 @@ Hp: <%= @experience.hp_rating %><br>
 <%= form_for @experience.adventures.last do |f|%>
   <%= f.collection_select(:hero_id, @heros, :id, :name) %>
   <%= f.hidden_field :experience_id, :value => @experience.id %>
-  <%= f.submit "Go On Adventure!", data: { confirm: "Your little sister heard about the adventure and wants to tag along. Will you allow her to go?"}%>
+  <p>
+  <%= f.label :little_sister, "Your little sister heard about the adventure and wants to tag along. Will you allow her to go?"%>
+  <p>
+  <%= f.radio_button :little_sister, "Yes" %> Yes <%= f.radio_button :little_sister, "No" %> No
+  <p>
+  <%= f.submit "Go On Adventure!"%>
 <% end %>
 
 

@@ -12,7 +12,8 @@ class HerosController < ApplicationController
     @hero = current_user.heros.build(hero_params)
     @hero.user_id = current_user.id
       if @hero.save
-        redirect_to user_heros_path(current_user)
+        flash[:word] = "Your hero is ready to serve!"
+        redirect_to hero_path(@hero)
       else
         render 'new'
       end
@@ -28,7 +29,7 @@ class HerosController < ApplicationController
       if @hero.save!
         redirect_to hero_path(@hero)
       else
-        "Something went wrong."
+      flash[:word] =  "Something went wrong. Your adventure has been cancelled"
         redirect_to root_path
       end
   end
