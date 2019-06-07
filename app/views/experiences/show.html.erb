@@ -11,9 +11,8 @@ Hp: <%= @experience.hp_rating %><br>
   <%= f.collection_select(:hero_id, @heros, :id, :name) %>
   <%= f.hidden_field :experience_id, :value => @experience.id %>
   <p>
-  <%= f.label :little_sister, "Your little sister heard about the adventure and wants to tag along. Will you allow her to go?"%>
-  <p>
-  <%= f.radio_button :little_sister, "Yes" %> Yes <%= f.radio_button :little_sister, "No" %> No
+  <%= f.label :little_sister, "Bring your little sister?"%>
+  <%= f.check_box :little_sister %>
   <p>
   <%= f.submit "Go On Adventure!"%>
 <% end %>
