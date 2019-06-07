@@ -6,16 +6,25 @@ belongs_to :user
 
   def set_out_on_adventure
   #  binding.pry
-    if self.little_sister == false
-      self.hero.update(:hp => (self.hero.hp - self.experience.hp_rating),
-                         :treasure => (self.hero.treasure + self.experience.treasure_rating),
-                         :total_xp => (self.hero.total_xp + self.experience.xp)
+  clean_code
+    if little_sister == false
+      hero.update(:hp => (hero.hp - experience.hp_rating),
+                         :treasure => (hero.treasure + experience.treasure_rating),
+                         :total_xp => (hero.total_xp + experience.xp)
                         )
     else
-      self.hero.update(:hp => (self.hero.hp - self.experience.hp_rating + 2),
-                         :treasure => (self.hero.treasure + self.experience.treasure_rating),
-                         :total_xp => (self.hero.total_xp + self.experience.xp + 5)
+      hero.update(:hp => (hero.hp - experience.hp_rating + 2),
+                         :treasure => (hero.treasure + experience.treasure_rating),
+                         :total_xp => (hero.total_xp + experience.xp + 5)
                         )
     end
+  end
+
+  private
+  
+  def clean_code
+    hero = self.hero
+    experience = self.experience
+    little_sister = self.little_sister
   end
 end
