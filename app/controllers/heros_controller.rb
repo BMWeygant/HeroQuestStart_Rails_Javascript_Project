@@ -1,7 +1,7 @@
 class HerosController < ApplicationController
 
   def index
-    @heros = Hero.all.order("created_at DESC")
+    @heros = Hero.all.seniority
   end
 
   def new
@@ -24,7 +24,6 @@ class HerosController < ApplicationController
   end
 
   def update
-    raise params
     @hero.update(hero_params)
       if @hero.save!
         redirect_to hero_path(@hero)

@@ -8,3 +8,5 @@
 <% @experiences.each do |experience|%>
 <h4><%= link_to experience.title, experience_path(experience) unless current_user.id != experience.user_id%></h4>
 <% end %>
+
+<p>Or you can <%= link_to "Create New Adventure",  new_user_experience_path(current_user) %> MiLord!</p>

@@ -2,7 +2,7 @@
 
 <% if current_user.heros.count == 0 %>
   <h3> You currently have no heros to adventure with MiLord!</h3><br>
-  <h5> You can create a new hero <%= link_to "here!", new_hero_path %></h5>
+  <h5> You can create a new hero <%= link_to "here!", new_user_hero_path %></h5>
 <% end %>
 
 <% @heros.each do |hero|%>

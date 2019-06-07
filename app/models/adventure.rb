@@ -12,16 +12,25 @@ belongs_to :user
                          :treasure => (hero.treasure + experience.treasure_rating),
                          :total_xp => (hero.total_xp + experience.xp)
                         )
+                        incapacitated
     else
       hero.update(:hp => (hero.hp - experience.hp_rating + 2),
                          :treasure => (hero.treasure + experience.treasure_rating),
                          :total_xp => (hero.total_xp + experience.xp + 5)
                         )
+                        incapacitated
     end
   end
 
+  def incapacitated
+    if self.hero.hp <= 0
+        self.hero.update(:incapacitated => true)
+    end
+  end
+
+
   private
-  
+
   def clean_code
     hero = self.hero
     experience = self.experience
