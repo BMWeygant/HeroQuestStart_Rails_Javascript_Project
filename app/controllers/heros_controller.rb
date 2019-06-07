@@ -23,7 +23,14 @@ class HerosController < ApplicationController
   end
 
   def update
-
+    raise params
+    @hero.update(hero_params)
+      if @hero.save!
+        redirect_to hero_path(@hero)
+      else
+        "Something went wrong."
+        redirect_to root_path
+      end
   end
 
   def destroy
