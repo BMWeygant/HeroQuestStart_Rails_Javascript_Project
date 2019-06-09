@@ -1,4 +1,5 @@
 class HerosController < ApplicationController
+before_action :authenticate_user!
 
   def index
     @heros = Hero.all.seniority

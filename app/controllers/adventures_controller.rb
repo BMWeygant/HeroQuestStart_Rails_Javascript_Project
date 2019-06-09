@@ -1,5 +1,5 @@
 class AdventuresController < ApplicationController
-
+before_action :authenticate_user!
   def create
     @adventure = Adventure.create(adventure_params)
     @adventure.user_id = current_user.id
