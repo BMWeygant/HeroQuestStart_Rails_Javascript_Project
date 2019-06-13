@@ -1,4 +1,5 @@
 <%= simple_form_for @experience do |f| %>
 <%= f.input :title, label: "Adventure Title" %>
+<%= f.input :healing, as: :boolean %>
 <%= f.submit :submit %>
 <% end %>

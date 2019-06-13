@@ -8,7 +8,7 @@ Hp: <%= @experience.hp_rating %><br>
 <h3>Select which Hero you want to embark on  "<%="#{@experience.title}"%>"</h3>
 
 <%= form_for @experience.adventures.last do |f|%>
-  <%= f.collection_select(:hero_id, @heros, :id, :name) %>
+  <%= f.collection_select(:hero_id, @heros, :id, :name)%>
   <%= f.hidden_field :experience_id, :value => @experience.id %>
   <p>
   <%= f.label :little_sister, "Bring your little sister?"%>
@@ -19,3 +19,4 @@ Hp: <%= @experience.hp_rating %><br>
 
 
 <h3>Or <%=link_to "Select A Different Adventure", user_experiences_path(current_user)%></h3>
+<%= link_to "Delete Adventure", experience_path(@experience), method: :delete, data: { confirm: "Are you sure? This will permanently remove #{@experience.title} from your available experiences."} %>

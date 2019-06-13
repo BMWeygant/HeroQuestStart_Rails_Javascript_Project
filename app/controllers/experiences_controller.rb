@@ -21,13 +21,20 @@ class ExperiencesController < ApplicationController
 
   def show
     @experience = Experience.find(params[:id])
+    #binding.pry
     @heros = Hero.all.order("created_at ASC")
     @experience.adventures.build
+  end
+
+  def destroy
+    @experience = Experience.find(params[:id])
+    @experience.destroy
+    redirect_to user_experiences_path(current_user)
   end
 
   private
 
   def experience_params
-    params.require(:experience).permit(:title, :xp, :hp_rating, :treasure_rating, :user_id)
+    params.require(:experience).permit(:title, :xp, :hp_rating, :treasure_rating, :user_id, :healing)
   end
 end
