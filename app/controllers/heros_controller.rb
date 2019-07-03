@@ -3,6 +3,10 @@ before_action :authenticate_user!
 
   def index
     @heros = Hero.all.seniority
+    respond_to do |f|
+        f.html {render :index}
+        f.json {render json: @heros}
+      end
   end
 
   def new
@@ -13,6 +17,7 @@ before_action :authenticate_user!
     @hero = current_user.heros.build(hero_params)
     @hero.user_id = current_user.id
       if @hero.save
+        render json: @hero
         flash[:word] = "Your hero is ready to serve!"
         redirect_to hero_path(@hero)
       else
@@ -22,6 +27,10 @@ before_action :authenticate_user!
 
   def show
     @hero = Hero.find(params[:id])
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @hero}
+    end
   end
 
   def update
