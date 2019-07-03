@@ -17,7 +17,7 @@ before_action :authenticate_user!
     @hero = current_user.heros.build(hero_params)
     @hero.user_id = current_user.id
       if @hero.save
-        render json: @hero
+        #render json: @hero
         flash[:word] = "Your hero is ready to serve!"
         redirect_to hero_path(@hero)
       else

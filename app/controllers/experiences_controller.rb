@@ -22,7 +22,7 @@ class ExperiencesController < ApplicationController
   def show
     @experience = Experience.find(params[:id])
     #binding.pry
-    @heros = Hero.all.order("created_at ASC")
+    #@heros = Hero.all.order("created_at ASC")
     @experience.adventures.build
   end
 

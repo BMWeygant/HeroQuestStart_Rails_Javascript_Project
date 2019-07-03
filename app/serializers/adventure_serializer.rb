@@ -1,5 +1,5 @@
 class AdventureSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :hero_id, :little_sister, :experience_id
+  attributes :id, :little_sister
 
   belongs_to :experience
   belongs_to :hero
