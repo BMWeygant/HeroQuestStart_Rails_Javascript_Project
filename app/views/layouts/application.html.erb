@@ -15,10 +15,10 @@
      <div class="container">
 
        <div class="navbar-header">
-         <%= link_to "Home", root_path, class: "navbar-brand" %>
+         <%= link_to "Home", root_path, class: 'all_herooo' %>
          <%= link_to "Sign Up", new_user_registration_path unless user_signed_in?%>
          <% if user_signed_in? %>
-         <%= link_to "Heros", user_heros_path(current_user), class: "all_heros" %>
+         <%= link_to "Heros", user_heros_path(current_user), class: 'all_heros' %>
          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
          <% else %>
          <%= link_to "Log In", new_user_session_path %>
@@ -29,6 +29,8 @@
    <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
   <%= flash[:word] if flash[:word]%>
+  <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>
