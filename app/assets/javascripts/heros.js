@@ -5,7 +5,9 @@ $(() => {
 const bindClickHandlers = () => {
   $('.all_heros').on('click', (e) => {
     e.preventDefault()
-    console.log('wtf')
+    fetch(`/users/` + $(this).id + `/heros.json`)
+      .then((res) => res.json())
+      .then(data => console.log(data))
   })
 }
 

@@ -4,7 +4,7 @@ before_action :authenticate_user!
   def index
     @heros = Hero.all.seniority
     respond_to do |f|
-        f.html {render :index}
+        f.html 
         f.json {render json: current_user.heros}
       end
   end
