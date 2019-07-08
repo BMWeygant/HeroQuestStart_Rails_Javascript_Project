@@ -4,7 +4,7 @@ before_action :authenticate_user!
   def index
     @heros = Hero.all.seniority
     respond_to do |f|
-        f.html 
+        f.html
         f.json {render json: current_user.heros}
       end
   end
@@ -28,7 +28,7 @@ before_action :authenticate_user!
   def show
     @hero = Hero.find(params[:id])
     respond_to do |f|
-      f.html {render :show}
+      f.html 
       f.json {render json: @hero}
     end
   end
@@ -46,7 +46,7 @@ before_action :authenticate_user!
   def destroy
     @hero = Hero.find(params[:id])
     @hero.destroy
-    redirect_to user_heros_path(current_user)
+    redirect_to heros_path(current_user)
   end
 
   private

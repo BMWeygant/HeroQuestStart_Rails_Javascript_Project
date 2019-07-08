@@ -5,8 +5,8 @@ $(() => {
 const bindClickHandlers = () => {
   $('.all_heros').on('click', (e) => {
     e.preventDefault()
-    history.pushState(null, null, `/users/` + ${this.id} + `/heros`)
-    fetch(`/users/` + $(this).id + `/heros.json`)
+    history.pushState(null, null, "heros")
+    fetch(`/heros.json`)
       .then(res => res.json())
       .then(heros => {
       $('#app-container').html('')
@@ -16,6 +16,12 @@ const bindClickHandlers = () => {
         $('#app-container').append(heroHtml)
       })
     })
+  })
+
+  $(document).on('click', ".show_link", (e) => {
+    e.preventDefault()
+    console.log(this)
+    //fetch(`/heros/${}.json`)
   })
 }
 
@@ -31,7 +37,9 @@ function Hero(hero) {
 
 Hero.prototype.formatIndex = function(){
   let heroHtml = `
-  <h1>${this.name}</h1>
+
+  <a href="/heros/${this.id}" class="show_link"<h1>${this.name}</h1></a>
+
   `
   return heroHtml
 }
