@@ -6,22 +6,33 @@ const bindClickHandlers = () => {
   $('.all_heros').on('click', (e) => {
     e.preventDefault()
     history.pushState(null, null, "heros")
-    fetch(`/heros.json`)
-      .then(res => res.json())
-      .then(heros => {
-      $('#app-container').html('')
-      heros.forEach(hero => {
-        let newHero = new Hero(hero)
-        let heroHtml = newHero.formatIndex()
-        $('#app-container').append(heroHtml)
-      })
-    })
+    getHeros()
   })
 
-  $(document).on('click', ".show_link", (e) => {
+  $(document).on('click', ".show_link", function(e){
     e.preventDefault()
-    console.log(this)
-    //fetch(`/heros/${}.json`)
+    $('#app-container').html('')
+    let id = $(this).attr('data-id')
+    fetch(`/heros/${id}.json`)
+    .then(res => res.json())
+    .then(hero => {
+      let newHero = new Hero(hero)
+      let heroHtml = newHero.formatShow()
+      $('#app-container').append(heroHtml)
+    })
+  })
+}
+
+const getHeros = () => {
+  fetch(`/heros.json`)
+    .then(res => res.json())
+    .then(heros => {
+    $('#app-container').html('')
+    heros.forEach(hero => {
+      let newHero = new Hero(hero)
+      let heroHtml = newHero.formatIndex()
+      $('#app-container').append(heroHtml)
+    })
   })
 }
 
@@ -38,7 +49,16 @@ function Hero(hero) {
 Hero.prototype.formatIndex = function(){
   let heroHtml = `
 
-  <a href="/heros/${this.id}" class="show_link"<h1>${this.name}</h1></a>
+  <a href="/heros/${this.id}" data-id="${this.id}" class="show_link"<h1>${this.name}</h1></a>
+
+  `
+  return heroHtml
+}
+
+Hero.prototype.formatShow= function(){
+  let heroHtml = `
+
+  <h3>${this.name}</h3>
 
   `
   return heroHtml
