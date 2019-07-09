@@ -19,7 +19,8 @@ before_action :authenticate_user!
       if @hero.save
         #render json: @hero
         flash[:word] = "Your hero is ready to serve!"
-        redirect_to hero_path(@hero)
+        #redirect_to hero_path(@hero)
+        render json: @hero
       else
         render 'new'
       end
@@ -46,7 +47,7 @@ before_action :authenticate_user!
   def destroy
     @hero = Hero.find(params[:id])
     @hero.destroy
-    redirect_to heros_path(current_user)
+    redirect_to heros_path
   end
 
   private

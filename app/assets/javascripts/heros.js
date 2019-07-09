@@ -5,7 +5,7 @@ $(() => {
 const bindClickHandlers = () => {
   $('.all_heros').on('click', (e) => {
     e.preventDefault()
-    history.pushState(null, null, "heros")
+
     getHeros()
   })
 
@@ -13,13 +13,27 @@ const bindClickHandlers = () => {
     e.preventDefault()
     $('#app-container').html('')
     let id = $(this).attr('data-id')
-    history.pushState(null, null, `heros/${id}`)
+
     fetch(`/heros/${id}.json`)
     .then(res => res.json())
     .then(hero => {
       let newHero = new Hero(hero)
       let heroHtml = newHero.formatShow()
       $('#app-container').append(heroHtml)
+    })
+  })
+
+  $('#new_hero').on('submit', function(e){
+    e.preventDefault()
+
+    const values = $(this).serialize()
+
+    $.post('/heros', values).done(function(data) {
+      $('#app-container').html('')
+      const newHero = new Hero(data)
+      const htmlToAdd = newHero.formatShow()
+      $('#app-container').html(htmlToAdd)
+
     })
   })
 }
@@ -51,7 +65,7 @@ Hero.prototype.formatIndex = function(){
   let heroHtml = `
 <br>
 
-   <a href="/heros/${this.id}" data-id="${this.id}" class="show_link"> <h1>${this.name}</h1> <br></a>
+   <a href="/heros/${this.id}" data-id="${this.id}" class="show_link"> <h3>${this.name}</h3> <br></a>
 
   `
 
@@ -63,6 +77,10 @@ Hero.prototype.formatShow= function(){
   let heroHtml = `
 
   <h1>${this.name}</h1>
+  <h3>HP: ${this.hp}</h3>
+  <h3>Treasure: ${this.treasure}</h3>
+  <h3>XP: ${this.total_xp}</h3>
+  <h3>Incapacitated: ${this.incapacitated}</h3>
 
   `
   return heroHtml
