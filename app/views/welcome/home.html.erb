@@ -3,7 +3,7 @@
 <h5 align="center"> Please sign in or create an account to get started!</h5>
 <% else %>
 <h1 align="center">Welcome back to HeroQuestStart MiLord!</h1><br>
-<h5 align="center">View your <%= link_to "Current Heros", heros_path(current_user), class: "all_heros" %> or <%= link_to "Create New Hero",  new_hero_path(current_user) %></h5>
+<h5 align="center">View your <%= link_to "Current Heros", heros_path, class: "all_heros" %> or <%= link_to "Create New Hero",  new_hero_path(current_user) %></h5>
 <h3 align="center">Or perhaps you wish to</h3>
-<h5 align="center">View your <%= link_to "Current Adventures", experiences_path(current_user) %> or <%= link_to "Create New Adventure",  new_experience_path(current_user) %></h5>
+<h5 align="center">View your <%= link_to "Current Adventures", experiences_path %> or <%= link_to "Create New Adventure",  new_experience_path(current_user) %></h5>
 <% end %>

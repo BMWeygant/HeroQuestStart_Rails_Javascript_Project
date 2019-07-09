@@ -11,9 +11,9 @@ const bindClickHandlers = () => {
 
   $(document).on('click', '.show_link', function(e) {
     e.preventDefault()
-    history.pushState(null, null, `${this.id}`)
     $('#app-container').html('')
     let id = $(this).attr('data-id')
+    history.pushState(null, null, `heros/${id}`)
     fetch(`/heros/${id}.json`)
     .then(res => res.json())
     .then(hero => {
@@ -51,7 +51,7 @@ Hero.prototype.formatIndex = function(){
   let heroHtml = `
 <br>
 
-   <a href="/heros/${this.id}" data-id="${this.id}" class="show_link" <h1>${this.name} </h1><br></a>
+   <a href="/heros/${this.id}" data-id="${this.id}" class="show_link"> <h1>${this.name}</h1> <br></a>
 
   `
 
