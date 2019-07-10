@@ -3,16 +3,17 @@ $(() => {
 })
 
 const bindClickHandlers = () => {
-  $('.all_heros').on('click', (e) => {
+  $(document).on('click', '.all_heros', function(e) {
     e.preventDefault()
     getHeros()
+    window.history.pushState({}, '', `${this}`)
   })
 
   $(document).on('click', '.show_hero', function(e) {
     e.preventDefault()
     $('#app-container').html('')
     let id = $(this).attr('data-id')
-    // window.history.pushState(null, null, `${this}`)
+     window.history.pushState({}, '', `${this}`)
     fetch(`/heros/${id}.json`)
     .then(res => res.json())
     .then(hero => {
