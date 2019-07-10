@@ -42,12 +42,13 @@ const getHeros = () => {
   fetch(`/heros.json`)
     .then(res => res.json())
     .then(heros => {
-    $('#app-container').html('')
+    $('#app-container').html("<h1>All the King's Heros!</h1>")
     heros.forEach(hero => {
       let newHero = new Hero(hero)
       let heroHtml = newHero.formatIndex()
       $('#app-container').append(heroHtml)
     })
+    $('#app-container').append(`<a href="/heros/new" class="new_hero"> <h2>Or Create a New Hero!</h2></a>`)
   })
 }
 
@@ -61,11 +62,15 @@ function Hero(hero) {
   this.incapacitated = hero.incapacitated
 }
 
+
 Hero.prototype.formatIndex = function(){
   let heroHtml = `
-<br>
 
-   <a href="/heros/${this.id}" data-id="${this.id}" class="show_hero"> <h3>${this.name}</h3> <br></a>
+   <a href="/heros/${this.id}" data-id="${this.id}" class="show_hero"> <h2>${this.name}</h2></a>
+   <p>HP: ${this.hp} <br>
+   Treasure: ${this.treasure}<br>
+   XP: ${this.total_xp}<br>
+   Incapacitated: ${this.incapacitated}</p>
 
   `
 
@@ -76,7 +81,8 @@ Hero.prototype.formatIndex = function(){
 Hero.prototype.formatShow= function(){
   let heroHtml = `
 
-  <h1>${this.name}</h1>
+  <h1>Welcome to ${this.name}'s home MiLord!</h1>
+  <h3>Hero: ${this.name}</h3>
   <h3>HP: ${this.hp}</h3>
   <h3>Treasure: ${this.treasure}</h3>
   <h3>XP: ${this.total_xp}</h3>
