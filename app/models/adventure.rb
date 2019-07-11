@@ -5,8 +5,7 @@ belongs_to :user
 
 
   def set_out_on_adventure
-  #  binding.pry
-  clean_code
+    clean_code
     if hero.incapacitated == true
         hero.update(:hp => (hero.hp*0),
                     :treasure => (hero.treasure*1),
