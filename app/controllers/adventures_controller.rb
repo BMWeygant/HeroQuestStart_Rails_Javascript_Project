@@ -1,10 +1,12 @@
 class AdventuresController < ApplicationController
 before_action :authenticate_user!
+
   def create
     @adventure = Adventure.create(adventure_params)
     @adventure.user_id = current_user.id
 
     if @adventure
+      @adventure.save
       @adventure.set_out_on_adventure
       if @adventure.hero.incapacitated == true && @adventure.experience.healing == false
         flash[:word] = "#{@adventure.hero.name} is incapacitated and can not go on adventures at this time."

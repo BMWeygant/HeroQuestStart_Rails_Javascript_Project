@@ -59,6 +59,7 @@ function Hero(hero) {
   this.treasure = hero.treasure
   this.total_xp = hero.total_xp
   this.user = hero.user
+  this.adventures = hero.adventures
   this.incapacitated = hero.incapacitated
 }
 
@@ -79,6 +80,12 @@ Hero.prototype.formatIndex = function(){
 }
 
 Hero.prototype.formatShow= function(){
+
+  let thisShitIsStupidHtml = ``
+    this.adventures.forEach((adventure) => {
+      thisShitIsStupidHtml += `<li>Adventur Id: ${adventure.id} - Brought Little Sister?: ${adventure.little_sister}</li>`
+    })
+
   let heroHtml = `
 
   <h1>Welcome to ${this.name}'s home MiLord!</h1>
@@ -87,6 +94,8 @@ Hero.prototype.formatShow= function(){
   <h3>Treasure: ${this.treasure}</h3>
   <h3>XP: ${this.total_xp}</h3>
   <h3>Incapacitated: ${this.incapacitated}</h3>
+  <h3>Adventures Info : ${thisShitIsStupidHtml}</h3>
+
 
   `
   return heroHtml
