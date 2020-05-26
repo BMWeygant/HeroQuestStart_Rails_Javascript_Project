@@ -9,7 +9,7 @@ gem 'nokogiri'
 
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2'
+gem 'rails', '~> 6.0.3'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -42,7 +42,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-gem 'activesupport', '~> 6.0.2'
+gem 'activesupport', '~> 6.0.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
