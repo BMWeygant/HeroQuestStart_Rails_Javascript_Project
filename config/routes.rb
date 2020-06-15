@@ -15,5 +15,5 @@ end
 
 HeroQuestStart::Application.routes.draw do
   get "login" => "sessions#new"
-  get "/auth/:provider/callback" => "sessions#create"
+  get "/auth/#{:provider}/callback" => "sessions#create"
 end
