@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :heros
 
   #resources :adventures
+  get "login" => "sessions#new"
+  get "/auth/:provider/callback" => "sessions#create"
 
   resources :experiences
 
