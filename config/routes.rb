@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :heros
 
+  get "login" => "sessions#new"
+  get "/auth/#{:provider}/callback" => "sessions#create"
   #resources :adventures
 
   resources :experiences
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   post '/adventures', to: 'adventures#create'
 end
 
-HeroQuestStart::Application.routes.draw do
-  get "login" => "sessions#new"
-  get "/auth/#{:provider}/callback" => "sessions#create"
-end
+# HeroQuestStart::Application.routes.draw do
+#   get "login" => "sessions#new"
+#   get "/auth/#{:provider}/callback" => "sessions#create"
+# end
