@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :heros
 
   get "login" => "sessions#new"
-  get "/auth/heroku/callback" => "sessions#create"
+  get "/auth/#{:provider}/callback" => "sessions#create"
   #resources :adventures
 
   resources :experiences
