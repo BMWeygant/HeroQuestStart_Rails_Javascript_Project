@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    #sessions: 'users/sessions',
+    #registrations: 'users/registrations',
+    omniauth_callbacks: 'omni_auth'
+  }  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#home'
   resources :users
 
@@ -11,6 +14,13 @@ Rails.application.routes.draw do
   #resources :adventures
 
   resources :experiences
+
+  # devise_scope :user do
+  #   get 'sign_in', to: 'devise/sessions#new'
+  #   get 'sign_up', to: 'devise/registrations#new'
+  #   get 'forgot_password', to: 'devise/passwords#new'
+  #   get 'reset_password', to: 'devise/passwords#edit'
+  # end
 
   post '/adventures', to: 'adventures#create'
 end
