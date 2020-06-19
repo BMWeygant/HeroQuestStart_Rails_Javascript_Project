@@ -10,7 +10,7 @@ Rails.application.configure do
     user_name: ENV["EMAIL_USERNAME"],
     password:ENV["EMAIL_PASSWORD"]
   }
-config.action_mailer.default_url_options = { host: 'localhost', port: 3000  }
+config.action_mailer.default_url_options = { :host => 'localhost:3000'  }
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
