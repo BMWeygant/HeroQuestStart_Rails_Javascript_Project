@@ -40,6 +40,8 @@ gem 'jbuilder', '~> 2.5'
 
  gem 'pry'
 
+ gem 'dotenv-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'activesupport', '~> 6.0.2'
