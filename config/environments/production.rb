@@ -2,16 +2,16 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
+    address: "giow1087.siteground.us",
+    port: 465,
+    domain: "giow1087.siteground.us",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["EMAIL_USERNAME"],
-    password:ENV["EMAIL_PASSWORD"]
+    user_name: Rails.application.credentials.email[:email_username],
+    password: Rails.application.credentials.email[:email_password]
   }
 # doesn't have to be Heroku, but you get the idea.
-config.action_mailer.default_url_options = { :host => 'https://heroqueststart.herokuapp.com' }
+config.action_mailer.default_url_options = { host: 'https://heroqueststart.herokuapp.com' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true

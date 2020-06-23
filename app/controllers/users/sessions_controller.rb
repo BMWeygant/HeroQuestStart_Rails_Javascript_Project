@@ -3,7 +3,8 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   def new
-    redirect_to "/auth/heroku"
+    redirect_to "https://id.heroku.com/oauth/authorize?client_id={client-id}&response_type=code&scope={scopes}&state={anti-forgery-token}"
+    redirect_to "{redirect-uri}?code={code}&state={anti-forgery-token}"
   end
 
   def create
