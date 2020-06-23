@@ -70,7 +70,7 @@ config.action_mailer.default_url_options = { host: 'https://heroqueststart.herok
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-
+  config.require_master_key = true
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "HeroQuestStart_#{Rails.env}"
